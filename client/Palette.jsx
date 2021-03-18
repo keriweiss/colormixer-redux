@@ -6,8 +6,6 @@ import { connect } from 'react-redux';
 import { getPaletteInfo, resetPalette } from './redux/actions.js';
 
 const Palette = (props) => {
-  console.log(props);
-  const opa = document.getElementById('opaSlider');
   return (
     <div id='palette'>
       <h1>Palette</h1>
