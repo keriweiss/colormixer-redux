@@ -7,52 +7,60 @@ import { RESET_PALETTE } from './actions/resetPaletteAction';
 import { GET_PAINT_INFO } from './actions/paintInfoAction';
 import { ADD_COLOR } from './actions/addColorAction';
 import { DELETE_COLOR } from './actions/deleteColorAction';
+import { combineReducers } from 'redux';
 
-const initialState = {
-  selectedColor: {},
-  colors: [],
-  swatches: [],
-  paintInfo: {},
-  paletteInfo: [],
-};
-
-const reducer = (state = initialState, action) => {
-  if (action.type === SELECT_COLOR) {
-    const selectedColor = action.color;
-    return { ...state, selectedColor: selectedColor };
-  }
-  if (action.type === GET_COLORS) {
-    const colors = action.colors;
-    return { ...state, colors: colors };
-  }
-  if (action.type === GET_PAINT_INFO) {
-    const paintInfo = action.color;
-    return { ...state, paintInfo: paintInfo };
-  }
-  if (action.type === GET_PALETTE_INFO) {
-    const paletteInfo = action.paletteInfo;
-    return { ...state, paletteInfo: paletteInfo };
-  }
-  if (action.type === RESET_PALETTE) {
-    return { ...state, swatches: [] };
-  }
-  if (action.type === ADD_COLOR) {
-    const palette = action.palette;
-    return { ...state, swatches: palette.sort((a, b) => a.id - b.id) };
-  }
-  if (action.type === DELETE_COLOR) {
-    const palette = action.palette;
-    return { ...state, swatches: palette.sort((a, b) => a.id - b.id) };
-  }
-  if (action.type === CHANGE_OPACITY) {
-    const palette = action.palette;
-    return { ...state, swatches: palette.sort((a, b) => a.id - b.id) };
-  }
-  if (action.type === COLOR_GROUP_SELECT) {
-    const colors = action.colors;
-    return { ...state, colors: colors };
+const colorsReducer = (state = [], action) => {
+  if (action.type === GET_COLORS || action.type === COLOR_GROUP_SELECT) {
+    return (state = action.colors);
   }
   return state;
 };
+
+const swatchesReducer = (state = [], action) => {
+  if (action.type === RESET_PALETTE) {
+    return (state = []);
+  }
+  if (
+    action.type === ADD_COLOR ||
+    action.type === CHANGE_OPACITY ||
+    action.type === DELETE_COLOR
+  ) {
+    const palette = action.palette;
+    return (state = palette.sort((a, b) => a.id - b.id));
+  }
+  return state;
+};
+
+const selectedColorReducer = (state = {}, action) => {
+  if (action.type === SELECT_COLOR) {
+    return (state = action.color);
+  }
+  return state;
+};
+
+const paintInfoReducer = (state = {}, action) => {
+  if (action.type === GET_PAINT_INFO) {
+    return (state = action.color);
+  }
+  if (action.type === GET_PALETTE_INFO) {
+    return (state = {});
+  }
+  return state;
+};
+
+const paletteInfoReducer = (state = [], action) => {
+  if (action.type === GET_PALETTE_INFO) {
+    return (state = action.paletteInfo);
+  }
+  return state;
+};
+
+const reducer = combineReducers({
+  selectedColor: selectedColorReducer,
+  colors: colorsReducer,
+  swatches: swatchesReducer,
+  paintInfo: paintInfoReducer,
+  paletteInfo: paletteInfoReducer,
+});
 
 export default reducer;

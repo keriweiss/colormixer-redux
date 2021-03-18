@@ -6,7 +6,6 @@ const getPaletteInfo = () => {
   return async (dispatch) => {
     const palette = (await axios.get('/api/palette')).data;
     dispatch(_getPaletteInfo(palette));
-    dispatch(getPaintInfo({}));
   };
 };
 
