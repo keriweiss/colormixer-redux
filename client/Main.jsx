@@ -5,7 +5,7 @@ import Palette from './Palette.jsx';
 import PaintInfo from './PaintInfo.jsx';
 import PaletteInfo from './PaletteInfo.jsx';
 import ColorGroupSelect from './ColorGroupSelect.jsx';
-import { getColors } from './redux/actions.js';
+import { getColors } from './redux/actions/getColorActions.js';
 import { connect } from 'react-redux';
 
 class Main extends Component {

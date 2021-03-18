@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { colorGroupSelect } from './redux/actions.js';
+import { colorGroupSelect } from './redux/actions/colorGroupActions.js';
 
 const ColorGroupSelect = (props) => {
   return (

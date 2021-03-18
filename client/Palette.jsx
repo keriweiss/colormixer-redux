@@ -3,7 +3,8 @@ import OpacitySlider from './OpacitySlider.jsx';
 import Mixer from './Mixer.jsx';
 import PaletteSwatches from './PaletteSwatches.jsx';
 import { connect } from 'react-redux';
-import { getPaletteInfo, resetPalette } from './redux/actions.js';
+import { resetPalette } from './redux/actions/resetPaletteAction';
+import { getPaletteInfo } from './redux/actions/paletteInfoAction';
 
 const Palette = (props) => {
   return (

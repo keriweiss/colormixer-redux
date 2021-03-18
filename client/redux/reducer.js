@@ -1,14 +1,12 @@
-import {
-  CHANGE_OPACITY,
-  SELECT_COLOR,
-  GET_COLORS,
-  GET_PAINT_INFO,
-  GET_PALETTE_INFO,
-  RESET_PALETTE,
-  ADD_COLOR,
-  DELETE_COLOR,
-  COLOR_GROUP_SELECT,
-} from './actions';
+import { SELECT_COLOR } from './actions/selectColorAction';
+import { GET_COLORS } from './actions/getColorActions';
+import { COLOR_GROUP_SELECT } from './actions/colorGroupActions';
+import { CHANGE_OPACITY } from './actions/opacitySliderActions';
+import { GET_PALETTE_INFO } from './actions/paletteInfoAction';
+import { RESET_PALETTE } from './actions/resetPaletteAction';
+import { GET_PAINT_INFO } from './actions/paintInfoAction';
+import { ADD_COLOR } from './actions/addColorAction';
+import { DELETE_COLOR } from './actions/deleteColorAction';
 
 const initialState = {
   selectedColor: {},

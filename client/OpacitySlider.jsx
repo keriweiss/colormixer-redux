@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { changeOpacity } from './redux/actions';
+import { changeOpacity } from './redux/actions/opacitySliderActions';
 
 const OpacitySlider = (props) => {
   return (

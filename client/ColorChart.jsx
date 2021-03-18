@@ -1,6 +1,7 @@
 import React from 'react';
-import { getPaintInfo, addColor } from './redux/actions';
+import { addColor } from './redux/actions/addColorAction';
 import { connect } from 'react-redux';
+import { getPaintInfo } from './redux/actions/paintInfoAction';
 
 const ColorChart = (props) => {
   return (

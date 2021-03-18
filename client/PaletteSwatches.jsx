@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { selectColor, deleteColor } from './redux/actions';
+import { selectColor } from './redux/actions/selectColorAction';
+import { deleteColor } from './redux/actions/deleteColorAction';
 
 const PaletteSwatches = (props) => {
   const opa = document.getElementById('opaSlider');
