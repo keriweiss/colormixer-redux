@@ -2,8 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { changeOpacity } from './redux/actions';
 
-const OpacitySlider = ({ changeOpacity }) => {
-  const opa = document.getElementById('opaSlider');
+const OpacitySlider = (props) => {
   return (
     <input
       type='range'
@@ -11,23 +10,15 @@ const OpacitySlider = ({ changeOpacity }) => {
       max='100'
       className='slider'
       id='opaSlider'
-      onChange={() => changeOpacity(opa.value)}
+      onChange={(ev) => props.changeOpacity(ev.target.value)}
     ></input>
   );
 };
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    selectedColor: state.selectedColor,
-    swatches: ownProps.swatches,
-    deleteColor: ownProps.deleteColor,
-  };
-};
-
 const mapDispatchToProps = (dispatch) => {
   return {
-    selectColor: (color) => dispatch(selectColor(color)),
+    changeOpacity: (value) => dispatch(changeOpacity(value)),
   };
 };
 
-export default OpacitySlider;
+export default connect(null, mapDispatchToProps)(OpacitySlider);

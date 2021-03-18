@@ -3,6 +3,11 @@ import {
   SELECT_COLOR,
   GET_COLORS,
   GET_PAINT_INFO,
+  GET_PALETTE_INFO,
+  RESET_PALETTE,
+  ADD_COLOR,
+  DELETE_COLOR,
+  COLOR_GROUP_SELECT,
 } from './actions';
 
 const initialState = {
@@ -26,10 +31,29 @@ const reducer = (state = initialState, action) => {
     const paintInfo = action.color;
     return { ...state, paintInfo: paintInfo };
   }
-  //   if (action.type === CHANGE_OPACITY) {
-  //     const selectedColor = state.selectedColor;
-  //     return { };
-  //   }
+  if (action.type === GET_PALETTE_INFO) {
+    const paletteInfo = action.paletteInfo;
+    return { ...state, paletteInfo: paletteInfo };
+  }
+  if (action.type === RESET_PALETTE) {
+    return { ...state, swatches: [] };
+  }
+  if (action.type === ADD_COLOR) {
+    const palette = action.palette;
+    return { ...state, swatches: palette.sort((a, b) => a.id - b.id) };
+  }
+  if (action.type === DELETE_COLOR) {
+    const palette = action.palette;
+    return { ...state, swatches: palette.sort((a, b) => a.id - b.id) };
+  }
+  if (action.type === CHANGE_OPACITY) {
+    const palette = action.palette;
+    return { ...state, swatches: palette.sort((a, b) => a.id - b.id) };
+  }
+  if (action.type === COLOR_GROUP_SELECT) {
+    const colors = action.colors;
+    return { ...state, colors: colors };
+  }
   return state;
 };
 

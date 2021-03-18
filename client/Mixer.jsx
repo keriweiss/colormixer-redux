@@ -1,9 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const Mixer = ({ swatches }) => {
+const Mixer = (props) => {
   return (
     <div id='mixer'>
-      {swatches.map((swatch, idx) => {
+      {props.swatches.map((swatch, idx) => {
         return (
           <img
             key={idx}
@@ -17,4 +18,10 @@ const Mixer = ({ swatches }) => {
   );
 };
 
-export default Mixer;
+const mapStateToProps = (state) => {
+  return {
+    swatches: state.swatches,
+  };
+};
+
+export default connect(mapStateToProps)(Mixer);

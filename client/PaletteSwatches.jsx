@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { selectColor } from './redux/actions';
+import { selectColor, deleteColor } from './redux/actions';
 
 const PaletteSwatches = (props) => {
   const opa = document.getElementById('opaSlider');
@@ -34,16 +34,16 @@ const PaletteSwatches = (props) => {
 const mapStateToProps = (state, ownProps) => {
   return {
     selectedColor: state.selectedColor,
-    swatches: ownProps.swatches,
-    deleteColor: ownProps.deleteColor,
+    swatches: state.swatches,
+    deleteColor: state.deleteColor,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     selectColor: (color) => dispatch(selectColor(color)),
+    deleteColor: (color) => dispatch(deleteColor(color)),
   };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PaletteSwatches);
-export { PaletteSwatches };

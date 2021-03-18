@@ -1,14 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { colorGroupSelect } from './redux/actions.js';
 
-const ColorGroupSelect = ({ colorGroup }) => {
-  const selectGroup = document.getElementById('selectGroup');
+const ColorGroupSelect = (props) => {
   return (
     <div>
       Color Groups:
       <select
         id='selectGroup'
-        onChange={() => {
-          colorGroup(selectGroup.value);
+        onChange={(ev) => {
+          props.colorGroupSelect(ev.target.value);
         }}
       >
         <option>All</option>
@@ -24,4 +25,10 @@ const ColorGroupSelect = ({ colorGroup }) => {
   );
 };
 
-export default ColorGroupSelect;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    colorGroupSelect: (value) => dispatch(colorGroupSelect(value)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(ColorGroupSelect);
