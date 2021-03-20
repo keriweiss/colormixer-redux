@@ -6,6 +6,7 @@ const addColor = (swatch, colorImg) => {
   return async (dispatch, getState) => {
     const state = getState();
     if (state.swatches.length >= 5) {
+      //i think this alert would be better in a react component
       alert('5 colors only.');
     } else {
       const addTo =

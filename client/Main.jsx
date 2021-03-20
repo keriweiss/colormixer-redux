@@ -19,6 +19,7 @@ class Main extends Component {
   }
 
   render() {
+    //i like this!
     let info;
     if (this.props.paintInfo.id) {
       info = <PaintInfo />;
